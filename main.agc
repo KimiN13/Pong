@@ -132,6 +132,8 @@ SetTextSize(17, 60)
 SetTextPosition(17, (GetVirtualWidth() - GetTextTotalWidth(17))/2, (GetVirtualHeight() - GetTextTotalHeight(17))/2)
 SetTextVisible(17, 0)
 
+//End Screen for SinglePlayer
+
 CreateText(19, "Game Over")
 SetTextSize(19, 60)
 SetTextPosition(19, (GetVirtualWidth() - GetTextTotalWidth(19))/2, (GetVirtualHeight() - GetTextTotalHeight(19))/2)
@@ -179,6 +181,7 @@ start = 0
 cntrls = 0
 startB = 0
 timeSt = 0
+endScreen = 0
 
 
 padOneDir = 1
@@ -289,7 +292,7 @@ do
 		gosub endGame
 	endif
 	
-//1 player game 								ihgoisfoisf Should  I divide the subroutines for each game mode?
+//1 player game 								
 	if start = 2
 		//1 player subroutines
 		gosub playerMove
@@ -507,7 +510,8 @@ if score1 = 5 or score2 = 5
 	SetSpriteVisible(3, 0)
 	SetTextVisible(7,0)
 	SetTextVisible(8, 0)
-	ballSPD = 0
+	startB = 0
+	endScreen = 1
 	SetSpriteActive(3, 0)
 	
 	//End Game Screen
@@ -530,6 +534,8 @@ if score1 = 5 or score2 = 5
 		
 		start = 0
 		SetTextVisible(16, 0)
+		SetTextVisible(7, 0)
+		SetTextVisible(8, 0)
 		
 		SetTextVisible(1, 1)
 		SetTextVisible(2, 1)
@@ -538,6 +544,7 @@ if score1 = 5 or score2 = 5
 	if GetRawKeyState(27) = 1 //Esc
 		end
 	endif
+	
 endif
 
 return
